@@ -80,7 +80,7 @@ mlr -I --nidx --fs "\t" sort -nr 5 "$folder"/RSS.tsv
 mlr -I --nidx --fs "\t" put '$1=gsub($1,"&","&amp;")' "$folder"/RSS.tsv
 
 # rimuovi la source dal titolo
-mlr -I --nidx --fs "\t" put '$2=gsub($2,"+[[].+[]]$","")' "$folder"/RSS.tsv
+mlr -I --nidx --fs "\t" put '$2=gsub($2," +[[].+[]]$","")' "$folder"/RSS.tsv
 
 mlr -I --nidx --fs "\t" put 'if ($3!=""){$2="[".$3."] ".$2}' "$folder"/RSS.tsv
 
