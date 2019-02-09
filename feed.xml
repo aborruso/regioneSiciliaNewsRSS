@@ -7,6 +7,7 @@
     <link>http://dev.ondata.it/projs/opendatasicilia/regioneSicilianaNewsRSS/feed.xml</link>
     <atom:link rel="self" href="http://dev.ondata.it/projs/opendatasicilia/regioneSicilianaNewsRSS/feed.xml" type="application/rss+xml"/>
     <webMaster>andrea.borruso@ondata.it (Andrea Borruso)</webMaster>
+    <docs>https://github.com/aborruso/regioneSiciliaNewsRSS</docs>
     <creativeCommons:license>http://creativecommons.org/licenses/by-sa/4.0/</creativeCommons:license>
     <item>
       <title>[Il Presidente] Turismo Per la Sicilia alla Bit 2019 lo spazio più grande</title>
