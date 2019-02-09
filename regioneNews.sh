@@ -4,6 +4,16 @@ set -x
 
 folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+### requisiti ###
+
+<<requisiti
+- xmlstarlet http://xmlstar.sourceforge.net/
+- xq https://yq.readthedocs.io/en/latest/
+- tidy http://tidy.sourceforge.net/
+- scrape-cli https://github.com/aborruso/scrape-cli
+- mlr http://johnkerl.org/miller/doc/
+requisiti
+
 ### note ###
 
 <<note
@@ -34,12 +44,12 @@ mlr -I --nidx --fs "\t" put '$2=gsub($2,"^(.{2}-.{3}-.{4}) +- ","")' "$folder"/f
 
 # estrai "Archivio La Regione Informa" da http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma
 curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma" | iconv -f ISO-8859-1 -t UTF-8 | \
-tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y | scrape -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]'  | perl -pe 's| *class=".*?" *||' | xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a.span,"La Regione Informa",.td.div.div.div.div.div[0].strong]|@tsv' | sed 's/\\n/ /g' >"$folder"/regioneInforma.tsv
+tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 | scrape -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]'  | perl -pe 's| *class=".*?" *||' | xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a.span,"La Regione Informa",.td.div.div.div.div.div[0].strong]|@tsv' | sed 's/\\n/ /g' >"$folder"/regioneInforma.tsv
 
 # estrai "Il Presidente" http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPresidente/PIR_Archivio
 # dateconv  -i "%d-%b-%Y %H:%M AM" -f "%a, %d %b %Y %H:%M:00 +0100" "30-JAN-2019 12:00 AM"
 curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPresidente/PIR_Archivio" | iconv -f ISO-8859-1 -t UTF-8 | \
-tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y | scrape -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]'  | perl -pe 's| *class=".*?" *||;s|</span>||;s|<span>||' | xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a["#text"],"Il Presidente",.td.div.div.div.div.div[0].strong]|@tsv'  | sed 's/\\n/ /g' >"$folder"/ilPresidente.tsv
+tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 | scrape -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]'  | perl -pe 's| *class=".*?" *||;s|</span>||;s|<span>||' | xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a["#text"],"Il Presidente",.td.div.div.div.div.div[0].strong]|@tsv'  | sed 's/\\n/ /g' >"$folder"/ilPresidente.tsv
 
 # fai il merge di presidente e regione informa e creo file Altro
 mlr --nidx --fs "\t" cat "$folder"/ilPresidente.tsv "$folder"/regioneInforma.tsv then clean-whitespace>"$folder"/tmpAltro.tsv
