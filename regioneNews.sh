@@ -4,6 +4,8 @@ set -x
 
 folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+source "$folder"/config
+
 ### requisiti ###
 
 <<requisiti
@@ -80,7 +82,7 @@ mlr -I --nidx --fs "\t" sort -nr 5 "$folder"/RSS.tsv
 ### anagrafica RSS
 titolo="Regione Siciliana News | Non ufficiale"
 descrizione="Un RSS per seguire le news pubblicate sul sito della Regione Siciliana"
-selflink="http://dev.ondata.it/projs/regioneSicilianaNewsRSS/feed.xml"
+selflink="http://dev.ondata.it/projs/opendatasicilia/regioneSicilianaNewsRSS/feed.xml"
 #docs="URL del repo da inserire"
 ### anagrafica RSS
 
@@ -110,3 +112,5 @@ while IFS=$'\t' read -r URL title source pubDateRSS datetime; do
 		--subnode "//item[$newcounter]" --type elem -n category -v "$source" -i "//item[$newcounter]/category[1]" -t "attr" -n "domain" -v "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source" \
 		"$folder"/feed.xml
 done <"$folder"/RSS.tsv
+
+cat "$folder"/feed.xml >"$web"/feed.xml
