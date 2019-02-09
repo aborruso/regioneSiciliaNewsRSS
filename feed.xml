@@ -4,8 +4,8 @@
     <language>it</language>
     <title>Regione Siciliana News | Non ufficiale</title>
     <description>Un RSS per seguire le news pubblicate sul sito della Regione Siciliana</description>
-    <link>http://dev.ondata.it/projs/istatDataRSS/feed.xml</link>
-    <atom:link rel="self" href="http://dev.ondata.it/projs/istatDataRSS/feed.xml" type="application/rss+xml"/>
+    <link>http://dev.ondata.it/projs/opendatasicilia/regioneSicilianaNewsRSS/feed.xml</link>
+    <atom:link rel="self" href="http://dev.ondata.it/projs/opendatasicilia/regioneSicilianaNewsRSS/feed.xml" type="application/rss+xml"/>
     <webMaster>andrea.borruso@ondata.it (Andrea Borruso)</webMaster>
     <creativeCommons:license>http://creativecommons.org/licenses/by-sa/4.0/</creativeCommons:license>
     <item>
