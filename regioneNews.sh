@@ -77,7 +77,7 @@ paste -d "\t" "$folder"/tmpRSS.tsv "$folder"/RSSdate.tsv >"$folder"/RSS.tsv
 # ordina il file di insieme per data descrescente
 mlr -I --nidx --fs "\t" sort -nr 5 "$folder"/RSS.tsv
 
-mlr -I --nidx --fs "\t" put '$1=gsub($1,"&","%26")' "$folder"/RSS.tsv
+mlr -I --nidx --fs "\t" put '$1=gsub($1,"&","&amp;")' "$folder"/RSS.tsv
 
 ### RSS ###
 
