@@ -26,8 +26,8 @@ source "$folder"/config
 
 # se non c'è il file per archiviare i feed, crealo
 if [[ ! -e "$folder"/data/RSSarchive.tsv ]]; then
-    mkdir -p "$folder"/data
-    touch "$folder"/data/RSSarchive.tsv
+	mkdir -p "$folder"/data
+	touch "$folder"/data/RSSarchive.tsv
 fi
 
 rm "$folder"/listaNotizie.tsv
@@ -35,35 +35,42 @@ urlBase="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_Serviz
 urlMese=$(curl "$urlBase" | scrapeCli -be '//div[@class="titolomappapage" and contains(string(), "2019")]/following-sibling::ul[1]//a' | xq -r '.html.body.a["@href"]')
 
 curl -L "$urlMese" | iconv -f ISO-8859-1 -t UTF-8 | tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 |
-    scrapeCli -be '//div[@class="boxbiancoLiv2"]' | perl -pe 's| *class=".*?" *||' | sed -r 's|<p>&#160;</p>||g;s/&#160;//g;s|<br />||g' |
-    xq -r '.html.body.div[]|[.h2.a["@href"],.h2.a["#text"]]|@tsv' >"$folder"/listaNotizie.tsv
+	scrapeCli -be '//div[@class="boxbiancoLiv2"]' | perl -pe 's| *class=".*?" *||g' | sed -r 's|<p>&#160;</p>||g;s/&#160;//g;s|<br />||g' |
+	xq -r '.html.body.div[]|[.h2.a["@href"],.h2.a["#text"]]|@tsv' >"$folder"/listaNotizie.tsv
 
 mlr -I --nidx --fs "\t" clean-whitespace then filter -x -S '$2==""' "$folder"/listaNotizie.tsv
 
 mlr -I --nidx --fs "\t" put '$riferimento=gsub(regextract_or_else($2,"[[].+[]]$",""),"[][]","")' "$folder"/listaNotizie.tsv
 
-mlr --nidx --fs "\t" put '$data=regextract_or_else($2,"[0-9]{1,}-[a-zA-Z]{1,}-[0-9]{1,}","")' then cut -f data "$folder"/listaNotizie.tsv |
-    xargs -I _ dateconv --from-locale it_IT -i "%d-%b-%Y" -f "%a, %d %b %Y 02:00:00 +0100" _ >"$folder"/listaNotizieDate.tsv
+mlr --nidx --fs "\t" put '$data=regextract_or_else($2,"[0-9]{1,}-[a-zA-Z]{1,}-[0-9]{1,}","")' \
+	then cut -f data "$folder"/listaNotizie.tsv |
+	xargs -I _ dateconv --from-locale it_IT -i "%d-%b-%Y" -f "%a, %d %b %Y 02:00:00 +0100" _ >"$folder"/listaNotizieDate.tsv
 
 paste -d "\t" "$folder"/listaNotizie.tsv "$folder"/listaNotizieDate.tsv >"$folder"/finale.tsv
 
 # rimuovi dal titolo le date
-mlr -I --nidx --fs "\t" put '$2=gsub($2,"^(.{2}-.{3}-.{4}) +- ","")' "$folder"/finale.tsv 
+mlr -I --nidx --fs "\t" put '$2=gsub($2,"^(.{2}-.{3}-.{4}) +- ","")' "$folder"/finale.tsv
 
 # estrai "Archivio La Regione Informa" da http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma
-curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma" | iconv -f ISO-8859-1 -t UTF-8 | \
-tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 | scrapeCli -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]'  | perl -pe 's| *class=".+?" *||g' | xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a.span,"La Regione informa",.td.div.div.div.div.div[0].strong]|@tsv' | sed 's/\\n/ /g' >"$folder"/regioneInforma.tsv
+curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma" | iconv -f ISO-8859-1 -t UTF-8 |
+	tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 |
+	scrapeCli -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]' | perl -pe 's| *class=".+?" *||g' |
+	xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a.span,"La Regione informa",.td.div.div.div.div.div[0].strong]|@tsv' |
+	sed 's/\\n/ /g' >"$folder"/regioneInforma.tsv
 
 # estrai "Il Presidente" http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPresidente/PIR_Archivio
-# dateconv  -i "%d-%b-%Y %H:%M AM" -f "%a, %d %b %Y %H:%M:00 +0100" "30-JAN-2019 12:00 AM"
-curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPresidente/PIR_Archivio" | iconv -f ISO-8859-1 -t UTF-8 | \
-tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 | scrapeCli -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]'  | perl -pe 's| *class=".+?" *||g;s|</span>||;s|<span>||' | xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a["#text"],"Il Presidente",.td.div.div.div.div.div[0].strong]|@tsv'  | sed 's/\\n/ /g' >"$folder"/ilPresidente.tsv
+curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPresidente/PIR_Archivio" | iconv -f ISO-8859-1 -t UTF-8 |
+	tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 |
+	scrapeCli -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]' |
+	perl -pe 's| *class=".+?" *||g;s|</span>||g;s|<span>||g' |
+	xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a["#text"],"Il Presidente",.td.div.div.div.div.div[0].strong]|@tsv' |
+	sed 's/\\n/ /g' >"$folder"/ilPresidente.tsv
 
 # fai il merge di presidente e regione informa e creo file Altro
-mlr --nidx --fs "\t" cat "$folder"/ilPresidente.tsv "$folder"/regioneInforma.tsv then clean-whitespace>"$folder"/tmpAltro.tsv
+mlr --nidx --fs "\t" cat "$folder"/ilPresidente.tsv "$folder"/regioneInforma.tsv then clean-whitespace >"$folder"/tmpAltro.tsv
 
 # crea da Altro file con le date in formato RSS
-mlr --nidx --fs "\t" cut -f 4 "$folder"/tmpAltro.tsv | xargs -I _ dateconv  -i "%d-%b-%Y %H:%M AM" -f "%a, %d %b %Y %H:%M:00 +0100" _ >"$folder"/tmpAltroDate.tsv
+mlr --nidx --fs "\t" cut -f 4 "$folder"/tmpAltro.tsv | xargs -I _ dateconv -i "%d-%b-%Y %H:%M AM" -f "%a, %d %b %Y %H:%M:00 +0100" _ >"$folder"/tmpAltroDate.tsv
 
 # rimuovi da Altro il campo data esistente
 mlr -I --nidx --fs "\t" cut -x -f 4 "$folder"/tmpAltro.tsv
@@ -75,7 +82,7 @@ paste -d "\t" "$folder"/tmpAltro.tsv "$folder"/tmpAltroDate.tsv >"$folder"/altro
 mlr --nidx --fs "\t" cat "$folder"/altroDate.tsv "$folder"/finale.tsv >"$folder"/tmpRSS.tsv
 
 # estrai date in formato YYYYMMDD
-mlr --nidx --fs "\t" cut -f 4 "$folder"/tmpRSS.tsv | xargs -I _ dateconv  -i "%a, %d %b %Y %H:%M:00 +0100" -f "%Y%m%d" _ >"$folder"/RSSdate.tsv
+mlr --nidx --fs "\t" cut -f 4 "$folder"/tmpRSS.tsv | xargs -I _ dateconv -i "%a, %d %b %Y %H:%M:00 +0100" -f "%Y%m%d" _ >"$folder"/RSSdate.tsv
 
 # aggiungi date in formato YYYYMMDD al file di insieme
 paste -d "\t" "$folder"/tmpRSS.tsv "$folder"/RSSdate.tsv >"$folder"/RSS.tsv
@@ -106,7 +113,6 @@ descrizione="Un RSS per seguire le news pubblicate sul sito della Regione Sicili
 selflink="http://dev.ondata.it/projs/opendatasicilia/regioneSicilianaNewsRSS/feed.xml"
 #docs="URL del repo da inserire"
 ### anagrafica RSS
-
 
 rm "$folder"/feed.xml
 cp "$folder"/risorse/feedTemplate.xml "$folder"/feed.xml
