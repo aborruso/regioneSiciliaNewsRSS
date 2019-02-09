@@ -22,7 +22,7 @@ L'**URL** del **feed** **RSS** è [http://feeds.feedburner.com/RegioneSicilianaN
 
 Lo script si occupa di:
 
-- estrarre titolo notizia, data e URL notizia, dalle tre fonti soprastanti;
+- estrarre titolo, data e URL delle notizie, dalle tre fonti soprastanti;
 - se nel titolo è presente la fonte (ad esempio `[Dipartimento dell'ambiente]`), la rimuove e la inserisce nel campo `sorgente`;
 - se nel titolo è presente la data (ad esempio `08-FEB-2019 - Servizio II - Decreto Dirigente Generale n. 240 del ...`), la rimuove e la inserisce nel capo `data`;
 - converte le date dal formato di origine (`09-FEB-2019`) in formato RSS (`Sat, 09 Feb 2019 02:00:00 +0100`);
@@ -30,12 +30,12 @@ Lo script si occupa di:
 - crea il feed RSS;
 - crea un archivio delle notizie in formato TSV.
 
-**Nota bene**: al momento non è presente nessun controllo di errore. Né per sorgente non disponibile, né per una modifica nella struttura delle pagine sorgente.
+**Nota bene**: al momento non è presente alcun controllo di errore. Né per sorgente non disponibile, né per una modifica nella struttura delle pagine di _input_.
 
 ## Nota sulle pagine sorgente
 
-- il server non risponde dichiarando l'_encoding_. Quindi per interpretare correttamente la risposta e non avere problemi ad esempio con gli accenti, bisogna forzarne la definizione. Si tratta di `ISO-8859-1`;
-- in alcune pagine ci sono degli errori di validazione HTML. Ne è stata forzata la correzione, altrimenti l'estrazione di dati andava in errore.
+- il server non risponde dichiarando l'_encoding_. Quindi per interpretare correttamente la risposta e non avere problemi ad esempio con i caratteri accentati, bisogna forzarne la definizione. Si tratta di `ISO-8859-1`;
+- in alcune pagine ci sono degli errori di validazione HTML. Ne è stata forzata la correzione, altrimenti l'estrazione di dati potrebbe andare in errore.
 
 ## Nota sul file RSS di output
 
