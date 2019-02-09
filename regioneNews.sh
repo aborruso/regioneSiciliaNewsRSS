@@ -1,23 +1,5 @@
 #!/bin/bash
 
-### requisiti ###
-
-<<requisiti
-- xmlstarlet http://xmlstar.sourceforge.net/
-- xq https://yq.readthedocs.io/en/latest/
-- tidy http://tidy.sourceforge.net/
-- scrape-cli https://github.com/aborruso/scrape-cli
-- mlr http://johnkerl.org/miller/doc/
-requisiti
-
-### note ###
-
-<<note
-- il server nelle risposta http non definisce l'encoding, quindi è necessario forzarne la dichiarazione
-- ci sono degli errori html. Se non si correggono i motori di scraping possono andare in errore
-- vengono estratte da titolo data e diparimento
-note
-
 set -x
 
 folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
