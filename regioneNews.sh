@@ -4,6 +4,8 @@ set -x
 
 folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+mkdir -p "$folder"/process
+
 source "$folder"/config
 
 # se non c'è il file per archiviare i feed, crealo
@@ -18,27 +20,27 @@ urlMese=$(curl "$urlBase" | scrapeCli -be '//div[@class="titolomappapage" and co
 
 curl -L "$urlMese" | iconv -f ISO-8859-1 -t UTF-8 | tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 |
 	scrapeCli -be '//div[@class="boxbiancoLiv2"]' | perl -pe 's| *class=".*?" *||g' | sed -r 's|<p>&#160;</p>||g;s/&#160;//g;s|<br />||g' |
-	xq -r '.html.body.div[]|[.h2.a["@href"],.h2.a["#text"]]|@tsv' >"$folder"/listaNotizie.tsv
+	xq -r '.html.body.div[]|[.h2.a["@href"],.h2.a["#text"]]|@tsv' >"$folder"/process/listaNotizie.tsv
 
-mlr -I --nidx --fs "\t" clean-whitespace then filter -x -S '$2==""' "$folder"/listaNotizie.tsv
+mlr -I --nidx --fs "\t" clean-whitespace then filter -x -S '$2==""' "$folder"/process/listaNotizie.tsv
 
-mlr -I --nidx --fs "\t" put '$riferimento=gsub(regextract_or_else($2,"[[].+[]]$",""),"[][]","")' "$folder"/listaNotizie.tsv
+mlr -I --nidx --fs "\t" put '$riferimento=gsub(regextract_or_else($2,"[[].+[]]$",""),"[][]","")' "$folder"/process/listaNotizie.tsv
 
 mlr --nidx --fs "\t" put '$data=regextract_or_else($2,"[0-9]{1,}-[a-zA-Z]{1,}-[0-9]{1,}","")' \
-	then cut -f data "$folder"/listaNotizie.tsv |
-	xargs -I _ dateconv --from-locale it_IT -i "%d-%b-%Y" -f "%a, %d %b %Y 02:00:00 +0100" _ >"$folder"/listaNotizieDate.tsv
+	then cut -f data "$folder"/process/listaNotizie.tsv |
+	xargs -I _ dateconv --from-locale it_IT -i "%d-%b-%Y" -f "%a, %d %b %Y 02:00:00 +0100" _ >"$folder"/process/listaNotizieDate.tsv
 
-paste -d "\t" "$folder"/listaNotizie.tsv "$folder"/listaNotizieDate.tsv >"$folder"/finale.tsv
+paste -d "\t" "$folder"/process/listaNotizie.tsv "$folder"/process/listaNotizieDate.tsv >"$folder"/process/finale.tsv
 
 # rimuovi dal titolo le date
-mlr -I --nidx --fs "\t" put '$2=gsub($2,"^(.{2}-.{3}-.{4}) +- ","")' "$folder"/finale.tsv
+mlr -I --nidx --fs "\t" put '$2=gsub($2,"^(.{2}-.{3}-.{4}) +- ","")' "$folder"/process/finale.tsv
 
 # estrai "Archivio La Regione Informa" da http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma
 curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma" | iconv -f ISO-8859-1 -t UTF-8 |
 	tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 |
 	scrapeCli -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]' | perl -pe 's| *class=".+?" *||g' |
 	xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a.span,"La Regione informa",.td.div.div.div.div.div[0].strong]|@tsv' |
-	sed 's/\\n/ /g' >"$folder"/regioneInforma.tsv
+	sed 's/\\n/ /g' >"$folder"/process/regioneInforma.tsv
 
 # estrai "Il Presidente" http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPresidente/PIR_Archivio
 curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPresidente/PIR_Archivio" | iconv -f ISO-8859-1 -t UTF-8 |
@@ -46,46 +48,46 @@ curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPre
 	scrapeCli -be '//table[@id]//tr[.//div[@class="dataslidearchivio" and contains(string(), "-2019 ")]]' |
 	perl -pe 's| *class=".+?" *||g;s|</span>||g;s|<span>||g' |
 	xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a["#text"],"Il Presidente",.td.div.div.div.div.div[0].strong]|@tsv' |
-	sed 's/\\n/ /g' >"$folder"/ilPresidente.tsv
+	sed 's/\\n/ /g' >"$folder"/process/ilPresidente.tsv
 
 # fai il merge di presidente e regione informa e creo file Altro
-mlr --nidx --fs "\t" cat "$folder"/ilPresidente.tsv "$folder"/regioneInforma.tsv then clean-whitespace >"$folder"/tmpAltro.tsv
+mlr --nidx --fs "\t" cat "$folder"/process/ilPresidente.tsv "$folder"/process/regioneInforma.tsv then clean-whitespace >"$folder"/process/tmpAltro.tsv
 
 # crea da Altro file con le date in formato RSS
-mlr --nidx --fs "\t" cut -f 4 "$folder"/tmpAltro.tsv | xargs -I _ dateconv -i "%d-%b-%Y %H:%M AM" -f "%a, %d %b %Y %H:%M:00 +0100" _ >"$folder"/tmpAltroDate.tsv
+mlr --nidx --fs "\t" cut -f 4 "$folder"/process/tmpAltro.tsv | xargs -I _ dateconv -i "%d-%b-%Y %H:%M AM" -f "%a, %d %b %Y %H:%M:00 +0100" _ >"$folder"/process/tmpAltroDate.tsv
 
 # rimuovi da Altro il campo data esistente
-mlr -I --nidx --fs "\t" cut -x -f 4 "$folder"/tmpAltro.tsv
+mlr -I --nidx --fs "\t" cut -x -f 4 "$folder"/process/tmpAltro.tsv
 
 # aggiungi ad Alto le date in formato RSS
-paste -d "\t" "$folder"/tmpAltro.tsv "$folder"/tmpAltroDate.tsv >"$folder"/altroDate.tsv
+paste -d "\t" "$folder"/process/tmpAltro.tsv "$folder"/process/tmpAltroDate.tsv >"$folder"/process/altroDate.tsv
 
 # fai il merge di Altro con l'archivio News
-mlr --nidx --fs "\t" cat "$folder"/altroDate.tsv "$folder"/finale.tsv >"$folder"/tmpRSS.tsv
+mlr --nidx --fs "\t" cat "$folder"/process/altroDate.tsv "$folder"/process/finale.tsv >"$folder"/process/tmpRSS.tsv
 
 # estrai date in formato YYYYMMDD
-mlr --nidx --fs "\t" cut -f 4 "$folder"/tmpRSS.tsv | xargs -I _ dateconv -i "%a, %d %b %Y %H:%M:00 +0100" -f "%Y%m%d" _ >"$folder"/RSSdate.tsv
+mlr --nidx --fs "\t" cut -f 4 "$folder"/process/tmpRSS.tsv | xargs -I _ dateconv -i "%a, %d %b %Y %H:%M:00 +0100" -f "%Y%m%d" _ >"$folder"/process/RSSdate.tsv
 
 # aggiungi date in formato YYYYMMDD al file di insieme
-paste -d "\t" "$folder"/tmpRSS.tsv "$folder"/RSSdate.tsv >"$folder"/RSS.tsv
+paste -d "\t" "$folder"/process/tmpRSS.tsv "$folder"/process/RSSdate.tsv >"$folder"/process/RSS.tsv
 
 # ordina il file di insieme per data descrescente
-mlr -I --nidx --fs "\t" sort -nr 5 "$folder"/RSS.tsv
+mlr -I --nidx --fs "\t" sort -nr 5 "$folder"/process/RSS.tsv
 
-mlr -I --nidx --fs "\t" put '$1=gsub($1,"&","&amp;")' "$folder"/RSS.tsv
+mlr -I --nidx --fs "\t" put '$1=gsub($1,"&","&amp;")' "$folder"/process/RSS.tsv
 
 # rimuovi la source dal titolo quando messa a fine titolo
-mlr -I --nidx --fs "\t" put '$2=gsub($2," +[[].+[]]$","")' "$folder"/RSS.tsv
+mlr -I --nidx --fs "\t" put '$2=gsub($2," +[[].+[]]$","")' "$folder"/process/RSS.tsv
 
 # inserisci nel titolo la source a inizio cella
-mlr -I --nidx --fs "\t" put 'if ($3!=""){$2="[".$3."] ".$2}' "$folder"/RSS.tsv
+mlr -I --nidx --fs "\t" put 'if ($3!=""){$2="[".$3."] ".$2}' "$folder"/process/RSS.tsv
 
 # rimuovi eventuali duplicati
-mlr -I --nidx --fs "\t" uniq -a "$folder"/RSS.tsv
+mlr -I --nidx --fs "\t" uniq -a "$folder"/process/RSS.tsv
 
 # crea archivio
 cp "$folder"/data/RSSarchive.tsv "$folder"/data/tmp_RSSarchive.tsv
-mlr --nidx --fs "\t" cat then uniq -a "$folder"/RSS.tsv "$folder"/data/tmp_RSSarchive.tsv >"$folder"/data/RSSarchive.tsv
+mlr --nidx --fs "\t" cat then uniq -a "$folder"/process/RSS.tsv "$folder"/data/tmp_RSSarchive.tsv >"$folder"/data/RSSarchive.tsv
 
 ### RSS ###
 
@@ -109,6 +111,9 @@ xmlstarlet ed -L --subnode "//channel" --type elem -n webMaster -v "andrea.borru
 xmlstarlet ed -L --subnode "//channel" --type elem -n creativeCommons:license -v "http://creativecommons.org/licenses/by-sa/4.0/" "$folder"/feed.xml
 
 # leggo in loop i dati del file CSV e li uso per creare nuovi item nel file XML
+
+cp "$folder"/process/RSS.tsv "$folder"/RSS.tsv
+
 newcounter=0
 while IFS=$'\t' read -r URL title source pubDateRSS datetime; do
 	newcounter=$(expr $newcounter + 1)
