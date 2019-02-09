@@ -57,5 +57,6 @@ Lo script si occupa di:
 - tidy http://tidy.sourceforge.net/
 - scrape-cli https://github.com/aborruso/scrape-cli
 - mlr http://johnkerl.org/miller/doc/
+- dateutils https://github.com/hroptatyr/dateutils
 
 Per scrape-cli, si fa il download con `wget -O "scrapeCli" "https://github.com/aborruso/scrape-cli/releases/download/v1.0/scrape"`, poi gli si da il permesso di esecuzione e lo si sposta in una cartella presente nel PATH del sistema operativo.
