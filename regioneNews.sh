@@ -50,16 +50,16 @@ curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPre
 	xq -r '.html.body.tr[]|[.td.div.div.div.div.div[1].a["@href"],.td.div.div.div.div.div[1].a["#text"],"Il Presidente",.td.div.div.div.div.div[0].strong]|@tsv' |
 	sed 's/\\n/ /g' >"$folder"/process/ilPresidente.tsv
 
-# fai il merge di presidente e regione informa e creo file Altro
+# fai il merge di presidente e regione informa e crea file Altro
 mlr --nidx --fs "\t" cat "$folder"/process/ilPresidente.tsv "$folder"/process/regioneInforma.tsv then clean-whitespace >"$folder"/process/tmpAltro.tsv
 
-# crea da Altro file con le date in formato RSS
+# crea da Altro, file con le date in formato RSS
 mlr --nidx --fs "\t" cut -f 4 "$folder"/process/tmpAltro.tsv | xargs -I _ dateconv -i "%d-%b-%Y %H:%M AM" -f "%a, %d %b %Y %H:%M:00 +0100" _ >"$folder"/process/tmpAltroDate.tsv
 
 # rimuovi da Altro il campo data esistente
 mlr -I --nidx --fs "\t" cut -x -f 4 "$folder"/process/tmpAltro.tsv
 
-# aggiungi ad Alto le date in formato RSS
+# aggiungi ad Altro le date in formato RSS
 paste -d "\t" "$folder"/process/tmpAltro.tsv "$folder"/process/tmpAltroDate.tsv >"$folder"/process/altroDate.tsv
 
 # fai il merge di Altro con l'archivio News
@@ -74,18 +74,19 @@ paste -d "\t" "$folder"/process/tmpRSS.tsv "$folder"/process/RSSdate.tsv >"$fold
 # ordina il file di insieme per data descrescente
 mlr -I --nidx --fs "\t" sort -nr 5 "$folder"/process/RSS.tsv
 
+# se nell'URL è presente il carattere "&", sostituiscilo con "&amp;"
 mlr -I --nidx --fs "\t" put '$1=gsub($1,"&","&amp;")' "$folder"/process/RSS.tsv
 
-# rimuovi la source dal titolo quando messa a fine titolo
+# rimuovi la source dal titolo, quando messa a fine titolo
 mlr -I --nidx --fs "\t" put '$2=gsub($2," +[[].+[]]$","")' "$folder"/process/RSS.tsv
 
-# inserisci nel titolo la source a inizio cella
+# inserisci la source, nel titolo a inizio cella 
 mlr -I --nidx --fs "\t" put 'if ($3!=""){$2="[".$3."] ".$2}' "$folder"/process/RSS.tsv
 
 # rimuovi eventuali duplicati
 mlr -I --nidx --fs "\t" uniq -a "$folder"/process/RSS.tsv
 
-# crea archivio
+# crea archivio notizie
 cp "$folder"/data/RSSarchive.tsv "$folder"/data/tmp_RSSarchive.tsv
 mlr --nidx --fs "\t" cat then uniq -a "$folder"/process/RSS.tsv "$folder"/data/tmp_RSSarchive.tsv >"$folder"/data/RSSarchive.tsv
 
@@ -95,25 +96,24 @@ mlr --nidx --fs "\t" cat then uniq -a "$folder"/process/RSS.tsv "$folder"/data/t
 titolo="Regione Siciliana News | Non ufficiale"
 descrizione="Un RSS per seguire le news pubblicate sul sito della Regione Siciliana"
 selflink="http://dev.ondata.it/projs/opendatasicilia/regioneSicilianaNewsRSS/feed.xml"
-#docs="URL del repo da inserire"
+docs="https://github.com/aborruso/regioneSiciliaNewsRSS"
 ### anagrafica RSS
 
 rm "$folder"/feed.xml
 cp "$folder"/risorse/feedTemplate.xml "$folder"/feed.xml
 
-# aggiungo i dati di anafrafica al feed
+# aggiungi i dati di anafrafica al feed
 xmlstarlet ed -L --subnode "//channel" --type elem -n title -v "$titolo" "$folder"/feed.xml
 xmlstarlet ed -L --subnode "//channel" --type elem -n description -v "$descrizione" "$folder"/feed.xml
 xmlstarlet ed -L --subnode "//channel" --type elem -n link -v "$selflink" "$folder"/feed.xml
 xmlstarlet ed -L --subnode "//channel" --type elem -n "atom:link" -v "" -i "//*[name()='atom:link']" -t "attr" -n "rel" -v "self" -i "//*[name()='atom:link']" -t "attr" -n "href" -v "$selflink" -i "//*[name()='atom:link']" -t "attr" -n "type" -v "application/rss+xml" "$folder"/feed.xml
 xmlstarlet ed -L --subnode "//channel" --type elem -n webMaster -v "andrea.borruso@ondata.it (Andrea Borruso)" "$folder"/feed.xml
-#xmlstarlet ed -L --subnode "//channel" --type elem -n docs -v "$docs" "$folder"/feed.xml
+xmlstarlet ed -L --subnode "//channel" --type elem -n docs -v "$docs" "$folder"/feed.xml
 xmlstarlet ed -L --subnode "//channel" --type elem -n creativeCommons:license -v "http://creativecommons.org/licenses/by-sa/4.0/" "$folder"/feed.xml
-
-# leggo in loop i dati del file CSV e li uso per creare nuovi item nel file XML
 
 cp "$folder"/process/RSS.tsv "$folder"/RSS.tsv
 
+# leggi in loop i dati del file TSV e usali per creare nuovi item nel file XML
 newcounter=0
 while IFS=$'\t' read -r URL title source pubDateRSS datetime; do
 	newcounter=$(expr $newcounter + 1)
@@ -127,4 +127,5 @@ while IFS=$'\t' read -r URL title source pubDateRSS datetime; do
 		"$folder"/feed.xml
 done <"$folder"/RSS.tsv
 
+# pubblica online il feed
 cat "$folder"/feed.xml >"$web"/feed.xml
