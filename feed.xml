@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" version="2.0">
+  <channel>
+    <language>it</language>
+    <title>Regione Siciliana News | Non ufficiale</title>
+    <description>Un RSS per seguire le news pubblicate sul sito della Regione Siciliana</description>
+    <link>http://dev.ondata.it/projs/istatDataRSS/feed.xml</link>
+    <atom:link rel="self" href="http://dev.ondata.it/projs/istatDataRSS/feed.xml" type="application/rss+xml"/>
+    <webMaster>andrea.borruso@ondata.it (Andrea Borruso)</webMaster>
+    <creativeCommons:license>http://creativecommons.org/licenses/by-sa/4.0/</creativeCommons:license>
+    <item>
+      <title>Uva da tavola Danni per duecento milioni, Musumeci scrive al ministro</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8171B0D11025FD54E050060A01024D6D</link>
+      <pubDate>Sat, 09 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Uva da tavola Danni per duecento milioni, Musumeci scrive al ministro</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Convocazione prima Conferenza di Servizi del 14 febbraio 2019 per il rilascio del Provvedimento Autorizzatorio Unico Regionale, ex art. 27-bis D.Lgs. 152/2016 e ss.mm.ii.. [Dipartimento dell'ambiente]</title>
+      <link/>
+      <pubDate>Sat, 09 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Convocazione prima Conferenza di Servizi del 14 febbraio 2019 per il rilascio del Provvedimento Autorizzatorio Unico Regionale, ex art. 27-bis D.Lgs. 152/2016 e ss.mm.ii.. [Dipartimento dell'ambiente]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Dipartimento dell'ambiente</category>
+    </item>
+    <item>
+      <title>Aree rurali Riqualificazione dei borghi di Libertinia e Pietro Lupo</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/815EB96C4B84C7BBE050060A020263E8</link>
+      <pubDate>Fri, 08 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Aree rurali Riqualificazione dei borghi di Libertinia e Pietro Lupo</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Pantelleria, via alla gara per consolidare costoni rocciosi su acque termali</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8164D6D4D99F13B4E050060A020253BC</link>
+      <pubDate>Fri, 08 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Pantelleria, via alla gara per consolidare costoni rocciosi su acque termali</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Sopralluogo all' ospedale San Marco</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8164EAEFA746BEAFE050060A0102126A</link>
+      <pubDate>Fri, 08 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Sopralluogo all' ospedale San Marco</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Fruit Logistica, la Sicilia tra i padiglioni più apprezzati</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8164C1132AD554CBE050060A02022C1C</link>
+      <pubDate>Fri, 08 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Fruit Logistica, la Sicilia tra i padiglioni più apprezzati</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Tempi certi per il recupero della spiaggia di Eraclea Minoa</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8164933B0DC2A5DEE050060A02020574</link>
+      <pubDate>Fri, 08 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Tempi certi per il recupero della spiaggia di Eraclea Minoa</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>La Sicilia protagonista del Salon des Vacances</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/815FE7CBC1134740E050060A02022E4D</link>
+      <pubDate>Fri, 08 Feb 2019 12:00:00 +0100</pubDate>
+      <description>La Sicilia protagonista del Salon des Vacances</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Ue, Armao eletto presidente dell'Intergruppo regionale per l'insularità</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/815FED11CF7E8981E050060A01022A40</link>
+      <pubDate>Fri, 08 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Ue, Armao eletto presidente dell'Intergruppo regionale per l'insularità</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Bonifica "Acqua dei Corsari", 11 milioni dalla Regione</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/815F4CD222A59B2BE050060A01021B30</link>
+      <pubDate>Fri, 08 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Bonifica "Acqua dei Corsari", 11 milioni dalla Regione</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Impianti di depurazione, interventi per evitare sanzioni Ue</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/815F140A4D007760E050060A01020990</link>
+      <pubDate>Fri, 08 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Impianti di depurazione, interventi per evitare sanzioni Ue</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Comunicato 12265 del 07/02/2019 Avviso pubblico 24_2018 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</title>
+      <link/>
+      <pubDate>Fri, 08 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Comunicato 12265 del 07/02/2019 Avviso pubblico 24_2018 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Dipartimento dell'istruzione e della formazione professionale</category>
+    </item>
+    <item>
+      <title>Servizio II - Decreto Dirigente Generale n. 240 del 08/02/2019 [Dipartimento del lavoro]</title>
+      <link/>
+      <pubDate>Fri, 08 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Servizio II - Decreto Dirigente Generale n. 240 del 08/02/2019 [Dipartimento del lavoro]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Dipartimento del lavoro</category>
+    </item>
+    <item>
+      <title>Comunicato 12260 del 07/02/2019 Avviso pubblico 23_2018 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</title>
+      <link/>
+      <pubDate>Fri, 08 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Comunicato 12260 del 07/02/2019 Avviso pubblico 23_2018 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Dipartimento dell'istruzione e della formazione professionale</category>
+    </item>
+    <item>
+      <title>Comunicato 12248 del 07/02/2019 Avviso pubblico 15_2017 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</title>
+      <link/>
+      <pubDate>Fri, 08 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Comunicato 12248 del 07/02/2019 Avviso pubblico 15_2017 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Dipartimento dell'istruzione e della formazione professionale</category>
+    </item>
+    <item>
+      <title>Comunicato 12244 del 07/02/2019 Avviso pubblico 14_2017 _ Recapiti e-mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</title>
+      <link/>
+      <pubDate>Fri, 08 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Comunicato 12244 del 07/02/2019 Avviso pubblico 14_2017 _ Recapiti e-mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Dipartimento dell'istruzione e della formazione professionale</category>
+    </item>
+    <item>
+      <title>Approvato lo schema tipo di accordo fra Fps e enti di patronato [Fondo Pensioni Sicilia]</title>
+      <link/>
+      <pubDate>Fri, 08 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Approvato lo schema tipo di accordo fra Fps e enti di patronato [Fondo Pensioni Sicilia]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Fondo Pensioni Sicilia</category>
+    </item>
+    <item>
+      <title>Comunicato 12242 del 07/02/2019 Avviso pubblico 13_2017 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</title>
+      <link/>
+      <pubDate>Fri, 08 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Comunicato 12242 del 07/02/2019 Avviso pubblico 13_2017 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Dipartimento dell'istruzione e della formazione professionale</category>
+    </item>
+    <item>
+      <title>Comunicato 12241 del 07/02/2019 Avviso pubblico 12_2017 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</title>
+      <link/>
+      <pubDate>Fri, 08 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Comunicato 12241 del 07/02/2019 Avviso pubblico 12_2017 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Dipartimento dell'istruzione e della formazione professionale</category>
+    </item>
+    <item>
+      <title>Comunicato 12240 del 07/02/2019 Avviso pubblico 9_2016 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</title>
+      <link/>
+      <pubDate>Fri, 08 Feb 2019 02:00:00 +0100</pubDate>
+      <description>Comunicato 12240 del 07/02/2019 Avviso pubblico 9_2016 _ Recapiti e_mail da utilizzare per le trasmissioni documentali [Dipartimento dell'istruzione e della formazione professionale]</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Dipartimento dell'istruzione e della formazione professionale</category>
+    </item>
+    <item>
+      <title>Sanità, sbloccati i concorsi in Sicilia Nei prossimi tre anni previste cinquemila assunzioni</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/814DFE608FEA79B7E050060A0102106B</link>
+      <pubDate>Thu, 07 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Sanità, sbloccati i concorsi in Sicilia Nei prossimi tre anni previste cinquemila assunzioni</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Metro Catania - aeroporto, governo al lavoro per i fondi Ue</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/814AE3429992FE52E050060A01020B4A</link>
+      <pubDate>Thu, 07 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Metro Catania - aeroporto, governo al lavoro per i fondi Ue</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Efficientamento energetico: diffida per i comuni ritardatari</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/814ABD09FB085DE8E050060A01024ADA</link>
+      <pubDate>Thu, 07 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Efficientamento energetico: diffida per i comuni ritardatari</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Insediato comitato per il Piano territoriale regionale</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/814A8799763777B5E050060A01023BF0</link>
+      <pubDate>Thu, 07 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Insediato comitato per il Piano territoriale regionale</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Alluvioni Sicilia orientale Approvato piano di interventi straordinari da 5 mln</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/80D7F23E0F21D32EE050060A020214DF</link>
+      <pubDate>Wed, 06 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Alluvioni Sicilia orientale Approvato piano di interventi straordinari da 5 mln</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Accordo con i G.A.L. per promuovere la cultura</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/813BE4045CC101B9E050060A01025088</link>
+      <pubDate>Wed, 06 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Accordo con i G.A.L. per promuovere la cultura</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>La Sicilia protagonista a Fruit Logistica</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/81393F8C1F52AE10E050060A02023C0B</link>
+      <pubDate>Wed, 06 Feb 2019 12:00:00 +0100</pubDate>
+      <description>La Sicilia protagonista a Fruit Logistica</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Aree interne, assegnati 32 mln a Val Simeto</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8138736254A61DF4E050060A02026CF3</link>
+      <pubDate>Wed, 06 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Aree interne, assegnati 32 mln a Val Simeto</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Amministrative: Grasso, 28 aprile scelta obbligata</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/813774898DE2897CE050060A02021B0C</link>
+      <pubDate>Wed, 06 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Amministrative: Grasso, 28 aprile scelta obbligata</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Stanziati 17 milioni per gli asili nido comunali</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8112DA4D174856A3E050060A010252F5</link>
+      <pubDate>Mon, 04 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Stanziati 17 milioni per gli asili nido comunali</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Via libera al piano contro la povertà 42 milioni di euro le risorse disponibili</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/81365C9FC1E5646EE050060A01027D94</link>
+      <pubDate>Fri, 01 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Via libera al piano contro la povertà 42 milioni di euro le risorse disponibili</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Convocato tavolo per continuità territoriale Tariffe aeree priorità del governo Musumeci</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/80D0F7810CC47DD2E050060A02027B08</link>
+      <pubDate>Fri, 01 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Convocato tavolo per continuità territoriale Tariffe aeree priorità del governo Musumeci</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Oltre 100 milioni per sette città</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/80D86957A8D4BC66E050060A01020904</link>
+      <pubDate>Fri, 01 Feb 2019 12:00:00 +0100</pubDate>
+      <description>Oltre 100 milioni per sette città</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>L'Annunciata va a Milano</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/80D842CB9323DDC5E050060A01023003</link>
+      <pubDate>Fri, 01 Feb 2019 12:00:00 +0100</pubDate>
+      <description>L'Annunciata va a Milano</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Ex FIAT, nuovo appello al governo nazionale La Regione si fa portavoce delle istanze dei lavoratori</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/80C286D48FA44560E050060A01025775</link>
+      <pubDate>Thu, 31 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Ex FIAT, nuovo appello al governo nazionale La Regione si fa portavoce delle istanze dei lavoratori</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Via all'istituzione di tutti i parchi archeologici</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/80BD1EC30CC7F8D8E050060A02021B41</link>
+      <pubDate>Thu, 31 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Via all'istituzione di tutti i parchi archeologici</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Diga Pietrarossa: firmato accordo con il ministero Sbloccate le risorse per il completamento</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/80AED8A5762372FAE050060A010246FC</link>
+      <pubDate>Wed, 30 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Diga Pietrarossa: firmato accordo con il ministero Sbloccate le risorse per il completamento</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Assessore per un giorno: candidature sino a venerdì 1 marzo</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/80B002E6CD3CBD90E050060A0102193E</link>
+      <pubDate>Wed, 30 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Assessore per un giorno: candidature sino a venerdì 1 marzo</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Dirigenza più snella Via 232 postazioni</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/809D5C3F5A55B520E050060A010271B8</link>
+      <pubDate>Tue, 29 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Dirigenza più snella Via 232 postazioni</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Dopo 12 anni rinnovato il contratto per il personale</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8095FE85E09CB6AFE050060A01021C99</link>
+      <pubDate>Tue, 29 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Dopo 12 anni rinnovato il contratto per il personale</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Genio civile e Urega, cambiano i vertici</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/809B4F11FA98F0C0E050060A02022651</link>
+      <pubDate>Tue, 29 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Genio civile e Urega, cambiano i vertici</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Pronto soccorso, Razza scrive a commissari Aziende</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8099FB16A658A6EFE050060A02020B8E</link>
+      <pubDate>Tue, 29 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Pronto soccorso, Razza scrive a commissari Aziende</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>A Mistretta si sistema il centro storico</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8097CA9E5AEC997CE050060A020235CF</link>
+      <pubDate>Tue, 29 Jan 2019 12:00:00 +0100</pubDate>
+      <description>A Mistretta si sistema il centro storico</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Si ridisegna la rete scolastica</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8096F15727B6AA08E050060A02020AE8</link>
+      <pubDate>Tue, 29 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Si ridisegna la rete scolastica</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Trentotto assunzioni all'Agenzia regionale per l'ambiente</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8088FA8E3A39ACDEE050060A010203AF</link>
+      <pubDate>Mon, 28 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Trentotto assunzioni all'Agenzia regionale per l'ambiente</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Dopo 10 anni ripartono in sicilia gli scavi archeologici</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8059AF9A442746DFE050060A020268E8</link>
+      <pubDate>Sat, 26 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Dopo 10 anni ripartono in sicilia gli scavi archeologici</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">Il Presidente</category>
+    </item>
+    <item>
+      <title>Violenza sulle donne: finanziati 31 sportelli d'ascolto</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/804B3DB719198166E050060A0102415D</link>
+      <pubDate>Sat, 26 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Violenza sulle donne: finanziati 31 sportelli d'ascolto</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Danni in agricoltura, attivato fondo di solidarietà</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8058ECB02B250E53E050060A01023C0B</link>
+      <pubDate>Sat, 26 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Danni in agricoltura, attivato fondo di solidarietà</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Allattamento al seno: Sicilia protagonista alla conferenza promossa dal ministero</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8057D8265CF93336E050060A01021C8C</link>
+      <pubDate>Sat, 26 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Allattamento al seno: Sicilia protagonista alla conferenza promossa dal ministero</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Riparte la stagione sciistica di Piano Battaglia</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8059E70E6A8DDA15E050060A01027543</link>
+      <pubDate>Sat, 26 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Riparte la stagione sciistica di Piano Battaglia</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+    <item>
+      <title>Inaugurazione metanodotto a Fiumedinisi</title>
+      <link>http://pti.regione.sicilia.it/portal/page/portal/8058E24FD5197DDBE050060A02025E52</link>
+      <pubDate>Sat, 26 Jan 2019 12:00:00 +0100</pubDate>
+      <description>Inaugurazione metanodotto a Fiumedinisi</description>
+      <guid/>
+      <category domain="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source">La Regione Informa</category>
+    </item>
+  </channel>
+</rss>
