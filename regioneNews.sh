@@ -1,11 +1,5 @@
 #!/bin/bash
 
-set -x
-
-folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-source "$folder"/config
-
 ### requisiti ###
 
 <<requisiti
@@ -23,6 +17,18 @@ requisiti
 - ci sono degli errori html. Se non si correggono i motori di scraping possono andare in errore
 - vengono estratte da titolo data e diparimento
 note
+
+set -x
+
+folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+source "$folder"/config
+
+# se non c'è il file per archiviare i feed, crealo
+if [[ ! -e "$folder"/data/RSSarchive.tsv ]]; then
+    mkdir -p "$folder"/data
+    touch "$folder"/data/RSSarchive.tsv
+fi
 
 rm "$folder"/listaNotizie.tsv
 urlBase="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_Servizi/PIR_News?_piref857_3677299_857_3677298_3677298.strutsAction=%2Fnews.do&stepNews=archivio"
@@ -84,6 +90,13 @@ mlr -I --nidx --fs "\t" put '$2=gsub($2," +[[].+[]]$","")' "$folder"/RSS.tsv
 
 # inserisci nel titolo la source a inizio cella
 mlr -I --nidx --fs "\t" put 'if ($3!=""){$2="[".$3."] ".$2}' "$folder"/RSS.tsv
+
+# rimuovi eventuali duplicati
+mlr -I --nidx --fs "\t" uniq -a "$folder"/RSS.tsv
+
+# crea archivio
+cp "$folder"/data/RSSarchive.tsv "$folder"/data/tmp_RSSarchive.tsv
+mlr --nidx --fs "\t" cat then uniq -a "$folder"/RSS.tsv "$folder"/data/tmp_RSSarchive.tsv >"$folder"/data/RSSarchive.tsv
 
 ### RSS ###
 
