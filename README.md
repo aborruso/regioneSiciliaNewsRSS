@@ -10,13 +10,15 @@
 
 # Uno script bash per creare il feed RSS delle News della Regione Siciliana
 
-La **Regione Siciliana** **non** **ha** un **feed** **RSS** per le proprie **News**. Queste sono pubblicate in diverse pagine:
+La **Regione Siciliana** **non** **ha** un **feed** **RSS** per le proprie **News**. 
+
+È stato creato uno script per **crearlo**, **aggiornarlo** e **archiviare** la serie storica e l'**URL** è [http://feeds.feedburner.com/RegioneSicilianaNewsNonUfficiale](http://feeds.feedburner.com/RegioneSicilianaNewsNonUfficiale).
+
+La pagine sorgente sono queste:
 
 - l'[**Archivio delle notizie**](http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_Servizi/PIR_News?_piref857_3677299_857_3677298_3677298.strutsAction=/news.do&stepNews=archivio);
 - la [**Regione informa**](http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma);
 - il [**Presidente**](http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPresidente/PIR_Archivio).
-
-L'**URL** del **feed** **RSS** è [http://feeds.feedburner.com/RegioneSicilianaNewsNonUfficiale](http://feeds.feedburner.com/RegioneSicilianaNewsNonUfficiale).
 
 ## Note sullo script
 
