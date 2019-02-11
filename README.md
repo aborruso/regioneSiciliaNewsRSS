@@ -30,7 +30,10 @@ Lo script si occupa di:
 - crea il feed RSS;
 - crea un archivio delle notizie in formato TSV.
 
-**Nota bene**: al momento non è presente alcun controllo di errore. Né per sorgente non disponibile, né per una modifica nella struttura delle pagine di _input_.
+**Nota bene**: 
+
+- non è presente alcun controllo di errore. Né per sorgente non disponibile, né per una modifica nella struttura delle pagine di _input_;
+- la descrizione degli elementi del feed RSS è la copia del titolo.
 
 ## Nota sulle pagine sorgente
 
