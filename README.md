@@ -30,7 +30,7 @@ Lo script si occupa di:
 - crea il feed RSS;
 - crea un archivio delle notizie in formato TSV.
 
-**Nota bene**: 
+**Nota bene**:
 
 - non è presente alcun controllo di errore. Né per sorgente non disponibile, né per una modifica nella struttura delle pagine di _input_;
 - la descrizione degli elementi del feed RSS è la copia del titolo.
@@ -62,4 +62,4 @@ Lo script si occupa di:
 - mlr http://johnkerl.org/miller/doc/
 - dateutils https://github.com/hroptatyr/dateutils
 
-Per scrape-cli, si fa il download con `wget -O "scrapeCli" "https://github.com/aborruso/scrape-cli/releases/download/v1.0/scrape"`, poi gli si da il permesso di esecuzione e lo si sposta in una cartella presente nel PATH del sistema operativo.
+Per usare `scrape-cli`, fare il _download_ dell'eseguibile con `wget -O "scrapeCli" "https://github.com/aborruso/scrape-cli/releases/download/v1.0/scrape"`, poi dargli il permesso di esecuzione e spostarlo in una cartella presente nel PATH del sistema operativo.
