@@ -15,9 +15,12 @@ if [[ ! -e "$folder"/data/RSSarchive.tsv ]]; then
 fi
 
 rm "$folder"/listaNotizie.tsv
+# URL di partenza
 urlBase="http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_Servizi/PIR_News?_piref857_3677299_857_3677298_3677298.strutsAction=%2Fnews.do&stepNews=archivio"
+# estrai l'URL della pagina dell'ultimo mese
 urlMese=$(curl "$urlBase" | scrapeCli -be '//div[@class="titolomappapage" and contains(string(), "2019")]/following-sibling::ul[1]//a' | xq -r '.html.body.a["@href"]')
 
+# estrai i dati dall'archivio notizie
 curl -L "$urlMese" | iconv -f ISO-8859-1 -t UTF-8 | tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 |
 	scrapeCli -be '//div[@class="boxbiancoLiv2"]' | perl -pe 's| *class=".*?" *||g' | sed -r 's|<p>&#160;</p>||g;s/&#160;//g;s|<br />||g' |
 	xq -r '.html.body.div[]|[.h2.a["@href"],.h2.a["#text"]]|@tsv' >"$folder"/process/listaNotizie.tsv
