@@ -124,7 +124,6 @@ while IFS=$'\t' read -r URL title source pubDateRSS datetime; do
 		--subnode "//item[$newcounter]" --type elem -n title -v "$title" \
 		--subnode "//item[$newcounter]" --type elem -n link -v "$URL" \
 		--subnode "//item[$newcounter]" --type elem -n pubDate -v "$pubDateRSS" \
-		--subnode "//item[$newcounter]" --type elem -n description -v "$title" \
 		--subnode "//item[$newcounter]" --type elem -n guid -v "$URL" \
 		--subnode "//item[$newcounter]" --type elem -n category -v "$source" -i "//item[$newcounter]/category[1]" -t "attr" -n "domain" -v "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/RSSspecs#source" \
 		"$folder"/feed.xml

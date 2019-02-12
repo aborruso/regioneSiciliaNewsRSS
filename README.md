@@ -35,7 +35,8 @@ Lo script si occupa di:
 **Nota bene**:
 
 - non è presente alcun controllo di errore. Né per sorgente non disponibile, né per una modifica nella struttura delle pagine di _input_;
-- la descrizione degli elementi del feed RSS è la copia del titolo.
+- ~~la descrizione degli elementi del feed RSS è la copia del titolo~~;
+- negli elementi del feed non è presente il tag description.
 
 ## Nota sulle pagine sorgente
 
