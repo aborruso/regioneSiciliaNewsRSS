@@ -10,5 +10,4 @@ config
 feed.xml
 RSS.tsv
 data/*
-process/*
 risorse/*
