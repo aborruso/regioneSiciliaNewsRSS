@@ -8,3 +8,7 @@ listaNotizieDate.tsv
 listaNotizieDate.tsv
 config
 feed.xml
+RSS.tsv
+data/*
+process/*
+risorse/*

@@ -131,3 +131,15 @@ done <"$folder"/RSS.tsv
 
 # pubblica online il feed
 cat "$folder"/feed.xml >"$web"/feed.xml
+
+# pubblica sul repo
+
+mlr --itsvlite --ocsv label URL,titolo,sorgente,pubDate,ISODate then reorder -f titolo,sorgente,pubDate,ISODate,URL "$folder"/data/RSSarchive.tsv >"$folder"/data/RSSarchive.csv
+
+## trasformo in base64 il file che voglio uploadare
+var=$(base64 "$folder"/data/RSSarchive.csv);
+
+## faccio l'upload su github
+curl -i -X PUT https://api.github.com/repos/aborruso/regioneSiciliaNewsRSS/contents/RSSarchive.csv -H 'Authorization: token '"$token"'' -d @- <<CURL_DATA
+{"path": "$folder/data/RSSarchive.csv", "message": "update", "content": "$var", "branch": "master","sha": $(curl -X GET https://api.github.com/repos/aborruso/regioneSiciliaNewsRSS/contents/RSSarchive.csv | jq '.sha')}
+CURL_DATA
