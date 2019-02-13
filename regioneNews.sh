@@ -38,6 +38,9 @@ paste -d "\t" "$folder"/process/listaNotizie.tsv "$folder"/process/listaNotizieD
 # rimuovi dal titolo le date
 mlr -I --nidx --fs "\t" put '$2=gsub($2,"^(.{2}-.{3}-.{4}) +- ","")' "$folder"/process/finale.tsv
 
+# se la fonte non è definita, inserire "Archivio"
+mlr -I --nidx --fs "\t" put 'if ($3==""){$3="Archivio"}' "$folder"/process/finale.tsv
+
 # estrai "Archivio La Regione Informa" da http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma
 curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_ArchivioLaRegioneInforma" | iconv -f ISO-8859-1 -t UTF-8 |
 	tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 |
@@ -141,5 +144,5 @@ var=$(base64 "$folder"/data/RSSarchive.csv);
 
 ## faccio l'upload su github
 curl -i -X PUT https://api.github.com/repos/aborruso/regioneSiciliaNewsRSS/contents/RSSarchive.csv -H 'Authorization: token '"$token"'' -d @- <<CURL_DATA
-{"path": "$folder/data/RSSarchive.csv", "message": "update", "content": "$var", "branch": "master","sha": $(curl -X GET https://api.github.com/repos/aborruso/regioneSiciliaNewsRSS/contents/RSSarchive.csv | jq '.sha')}
+{"path": "$folder/data/RSSarchive.csv", "message": "Aggiorna archivio notizie", "content": "$var", "branch": "master","sha": $(curl -X GET https://api.github.com/repos/aborruso/regioneSiciliaNewsRSS/contents/RSSarchive.csv | jq '.sha')}
 CURL_DATA
