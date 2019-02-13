@@ -36,7 +36,8 @@ Lo script si occupa di:
 
 - non è presente alcun controllo di errore. Né per sorgente non disponibile, né per una modifica nella struttura delle pagine di _input_;
 - ~~la descrizione degli elementi del feed RSS è la copia del titolo~~;
-- negli elementi del feed non è presente il tag description.
+- negli elementi del feed non è presente il tag description;
+- l'orario di pubblicazione non è presente nel sito sorgente, quindi è inseritto in con dei valori predefiniti ed è pertanto da non prendere in considerazione.
 
 ## Nota sulle pagine sorgente
 
