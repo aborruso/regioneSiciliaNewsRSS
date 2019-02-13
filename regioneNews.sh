@@ -22,7 +22,7 @@ urlMese=$(curl "$urlBase" | scrapeCli -be '//div[@class="titolomappapage" and co
 
 # estrai i dati dall'archivio notizie
 curl -L "$urlMese" | iconv -f ISO-8859-1 -t UTF-8 | tidy -q --show-warnings no --drop-proprietary-attributes y --show-errors 0 --force-output y --wrap 70001 |
-	scrapeCli -be '//div[@class="boxbiancoLiv2"]' | perl -pe 's| *class=".*?" *||g' | sed -r 's|<p>&#160;</p>||g;s/&#160;//g;s|<br />||g' |
+	scrapeCli -be '//div[@class="boxbiancoLiv2"]' | perl -pe 's| *class=".*?" *||g;s|</?em>||g' | sed -r 's|<p>&#160;</p>||g;s/&#160;//g;s|<br />||g' |
 	xq -r '.html.body.div[]|[.h2.a["@href"],.h2.a["#text"]]|@tsv' >"$folder"/process/listaNotizie.tsv
 
 mlr -I --nidx --fs "\t" clean-whitespace then filter -x -S '$2==""' "$folder"/process/listaNotizie.tsv
