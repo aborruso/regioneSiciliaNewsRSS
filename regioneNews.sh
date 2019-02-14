@@ -1,5 +1,7 @@
 #!/bin/bash
 
+### Nota: i dati sono raccolti in modo "pulito" dal 12 febbraio 2019
+
 set -x
 
 folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
