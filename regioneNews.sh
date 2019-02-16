@@ -137,7 +137,7 @@ cat "$folder"/feed.xml >"$web"/feed.xml
 
 # pubblica sul repo
 
-mlr --itsvlite --ocsv label URL,titolo,sorgente,pubDate,ISODate then reorder -f titolo,sorgente,pubDate,ISODate,URL "$folder"/data/RSSarchive.tsv >"$folder"/data/RSSarchive.csv
+mlr --itsvlite --ocsv label URL,titolo,sorgente,pubDate,ISODate then reorder -f titolo,sorgente,pubDate,ISODate,URL then sort -nr ISODate "$folder"/data/RSSarchive.tsv >"$folder"/data/RSSarchive.csv
 
 ## trasformo in base64 il file che voglio uploadare
 var=$(base64 "$folder"/data/RSSarchive.csv);
