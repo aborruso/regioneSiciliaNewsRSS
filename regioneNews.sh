@@ -125,8 +125,9 @@ cp "$folder"/process/RSS.tsv "$folder"/RSS.tsv
 newcounter=0
 while IFS=$'\t' read -r URL title source pubDateRSS datetime; do
 	newcounter=$(expr $newcounter + 1)
+	titolo=$(echo "$title" | sed 's/&/&amp;/g')
 	xmlstarlet ed -L --subnode "//channel" --type elem -n item -v "" \
-		--subnode "//item[$newcounter]" --type elem -n title -v "$title" \
+		--subnode "//item[$newcounter]" --type elem -n title -v "$titolo" \
 		--subnode "//item[$newcounter]" --type elem -n link -v "$URL" \
 		--subnode "//item[$newcounter]" --type elem -n pubDate -v "$pubDateRSS" \
 		--subnode "//item[$newcounter]" --type elem -n guid -v "$URL" \
