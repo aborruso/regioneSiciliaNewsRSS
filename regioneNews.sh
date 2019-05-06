@@ -62,7 +62,7 @@ curl -sL "http://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE/PIR_IlPre
 mlr --nidx --fs "\t" cat "$folder"/process/ilPresidente.tsv "$folder"/process/regioneInforma.tsv then clean-whitespace >"$folder"/process/tmpAltro.tsv
 
 # crea da Altro, file con le date in formato RSS
-mlr --nidx --fs "\t" cut -f 4 "$folder"/process/tmpAltro.tsv | xargs -I _ dateconv -i "%d-%b-%Y %H:%M AM" -f "%a, %d %b %Y %H:%M:00 +0100" _ >"$folder"/process/tmpAltroDate.tsv
+mlr --nidx --fs "\t" cut -f 4 "$folder"/process/tmpAltro.tsv | xargs -I _ dateconv -i "%d-%b-%Y %H:%M %p" -f "%a, %d %b %Y %H:%M:00 +0100" _ >"$folder"/process/tmpAltroDate.tsv
 
 # rimuovi da Altro il campo data esistente
 mlr -I --nidx --fs "\t" cut -x -f 4 "$folder"/process/tmpAltro.tsv
