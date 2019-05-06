@@ -33,7 +33,7 @@ mlr -I --nidx --fs "\t" put '$riferimento=gsub(regextract_or_else($2,"[[].+[]]$"
 
 mlr --nidx --fs "\t" put '$data=regextract_or_else($2,"[0-9]{1,}-[a-zA-Z]{1,}-[0-9]{1,}","")' \
 	then cut -f data "$folder"/process/listaNotizie.tsv |
-	xargs -I _ dateconv --from-locale it_IT -i "%d-%b-%Y" -f "%a, %d %b %Y 02:00:00 +0100" _ >"$folder"/process/listaNotizieDate.tsv
+	xargs -I @ dateconv --from-locale it_IT -i "%d-%b-%Y" -f "%a, %d %b %Y 02:00:00 +0100" @ >"$folder"/process/listaNotizieDate.tsv
 
 paste -d "\t" "$folder"/process/listaNotizie.tsv "$folder"/process/listaNotizieDate.tsv >"$folder"/process/finale.tsv
 
@@ -88,7 +88,7 @@ mlr -I --nidx --fs "\t" put '$1=gsub($1,"&","&amp;")' "$folder"/process/RSS.tsv
 # rimuovi la source dal titolo, quando messa a fine titolo
 mlr -I --nidx --fs "\t" put '$2=gsub($2," +[[].+[]]$","")' "$folder"/process/RSS.tsv
 
-# inserisci la source, nel titolo a inizio cella 
+# inserisci la source, nel titolo a inizio cella
 mlr -I --nidx --fs "\t" put 'if ($3!=""){$2="[".$3."] ".$2}' "$folder"/process/RSS.tsv
 
 # rimuovi eventuali duplicati
